@@ -49,4 +49,21 @@ class PluginWfExample{
     $element = wfDocument::createHtmlElement('span', $data->get('data/message'));
     wfDocument::renderElement(array($element));
   }
+  /**
+   * Example of using method in document innerHTML param.
+   * innerHTML: 'method:wf/example:test:{"id"$ 1234}'
+   * @param array $data
+   * @return type
+   */
+  public function method_test($data){
+    wfPlugin::includeonce('wf/array');
+    $data = new PluginWfArray($data);
+    $element = array();
+    $element[] = wfDocument::createHtmlElement('div', array(
+        wfDocument::createHtmlElement('h1', 'PluginWfExample ()'), 
+        wfDocument::createHtmlElement('strong', 'ID:'), 
+        wfDocument::createHtmlElement('span', $data->get('id'))
+        ));
+    return $element;
+  }
 }
